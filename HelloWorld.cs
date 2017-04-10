@@ -22,7 +22,7 @@ namespace InteractiveOfficeClient
             window = new Gtk.Window ("Hello World");
 
             // Attach to the Delete Event when the window has been closed.
-            window.DeleteEvent += delegate { Application.Quit (); };
+            window.DeleteEvent += delegate  { window.Visible = !window.Visible; };
 
             // Creation of the Icon
             trayIcon = new StatusIcon(new Pixbuf(workingDirectory + "/Resources/app_icon.png"));
