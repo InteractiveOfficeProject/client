@@ -10,8 +10,8 @@ namespace InteractiveOfficeClient
         static void Main() {
             Application.Init ();
 
-            new MainWindow();
-
+            var mainWindow = new MainWindow();
+            var trayIcon = new IopTrayIcon(mainWindow);
             Application.Run ();
         }
 

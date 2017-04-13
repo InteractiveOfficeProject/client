@@ -11,6 +11,7 @@ namespace InteractiveOfficeClient
             Activate += delegate { window.Visible = !window.Visible; };
             PopupMenu += OnTrayIconPopup;
             TooltipText = "Hello World Icon";
+            Visible = true;
         }
 
         private void OnTrayIconPopup (object o, PopupMenuArgs popupMenuArgs) {

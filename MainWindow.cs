@@ -10,14 +10,7 @@ namespace InteractiveOfficeClient
         public MainWindow() : base("Interactive Office Project")
         {
             DeleteEvent += delegate  { Visible = false; };
-            CreateTrayIcon();
             ShowAll ();
-        }
-
-        private void CreateTrayIcon()
-        {
-            var trayIcon = new IopTrayIcon(this);
-            trayIcon.Visible = true;
         }
 
     }
