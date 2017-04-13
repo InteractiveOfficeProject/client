@@ -6,12 +6,7 @@ using GLib;
 namespace InteractiveOfficeClient
 {
     using Gtk;
-    public class HelloWorld {
-        // The Window
-        private static Gtk.Window window;
-
-        static string workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-
+    public class InteractiveOfficeClient {
         static void Main() {
             Application.Init ();
 
