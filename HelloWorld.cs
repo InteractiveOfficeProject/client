@@ -25,7 +25,7 @@ namespace InteractiveOfficeClient
             window.DeleteEvent += delegate  { window.Visible = !window.Visible; };
 
             // Creation of the Icon
-            trayIcon = new StatusIcon(new Pixbuf(workingDirectory + "/Resources/app_icon.png"));
+            trayIcon = new StatusIcon(Pixbuf.LoadFromResource("InteractiveOfficeClient.Resources.app_icon.png"));
             trayIcon.Visible = true;
 
             // Show/Hide the window (even from the Panel/Taskbar) when the TrayIcon has been clicked.
