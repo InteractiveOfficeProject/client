@@ -14,15 +14,14 @@ namespace InteractiveOfficeClient
 
         public MainWindow() : base("Interactive Office Project")
         {
-            DeleteEvent += delegate { Visible = false; };
             Add(Grid);
-
             Grid.Attach(BtnStartWorking, 0, 0, 1, 1);
             Grid.Attach(BtnStartBreak, 0, 1, 1, 1);
             Grid.AttachNextTo(BtnStartBreak, BtnStartWorking, PositionType.Bottom, 1, 1);
 
-            BtnStartWorking.Clicked += delegate { SetWorkingState(true); };
+            DeleteEvent += delegate { Visible = false; };
 
+            BtnStartWorking.Clicked += delegate { SetWorkingState(true); };
             BtnStartBreak.Clicked += delegate { SetWorkingState(false); };
 
             ShowAll();
