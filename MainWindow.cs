@@ -7,9 +7,12 @@ namespace InteractiveOfficeClient
 {
     public class MainWindow : Gtk.Window
     {
+        private readonly Grid Grid = new Grid();
         private readonly Button BtnStartWorking = new Button("Start Working");
         private readonly Button BtnStartBreak = new Button("Start Break");
-        private readonly Grid Grid = new Grid();
+        private readonly Label LabelTimeLeft = new Label("");
+
+
         private bool IsWorking = false;
 
         private enum TimerState {Created, Running, Paused};
@@ -19,17 +22,15 @@ namespace InteractiveOfficeClient
         private static readonly int INTERVAL_25_MIN_AS_SECONDS = 5*INTERVAL_5_MIN_AS_SECONDS;
 
         private int TimeLeft = 0;
-        private TimerCallback Callback;
-        private Timer Timer;
 
         public MainWindow() : base("Interactive Office Project")
         {
             Add(Grid);
-            Grid.Attach(BtnStartWorking, 0, 0, 1, 1);
-            Grid.Attach(BtnStartBreak, 0, 1, 1, 1);
+            Grid.Attach(LabelTimeLeft, 0, 0, 1, 1);
+            Grid.AttachNextTo(BtnStartWorking, LabelTimeLeft, PositionType.Bottom, 1, 1);
             Grid.AttachNextTo(BtnStartBreak, BtnStartWorking, PositionType.Bottom, 1, 1);
 
-            DeleteEvent += delegate { Visible = false; };
+            DeleteEvent += delegate { Iconify(); };
 
             BtnStartWorking.Clicked += delegate {
                 SetWorkingState(true);
@@ -38,7 +39,7 @@ namespace InteractiveOfficeClient
 
             ShowAll();
 
-            Callback = new TimerCallback(OnTimerCallback);
+            new System.Threading.Timer(new TimerCallback(OnTimerCallback), "", TimeSpan.Zero, TimeSpan.FromSeconds(1));
         }
 
         private void OnTimerCallback(object state)
@@ -47,7 +48,9 @@ namespace InteractiveOfficeClient
             if (TimeLeft <= 0)
             {
                 Visible = true;
+                TimeLeft = 0;
             }
+            LabelTimeLeft.Text = $"Time Left: {TimeLeft}s";
         }
 
         private void SetWorkingState(bool newState)
@@ -59,8 +62,6 @@ namespace InteractiveOfficeClient
             else
                 TimeLeft = INTERVAL_5_MIN_AS_SECONDS;
 
-            Timer = new System.Threading.Timer(Callback, "", int.MaxValue, INTERVAL_1_SECOND_AS_MILLIS);
-
             UpdateUi();
             Visible = false;
         }
@@ -69,7 +70,7 @@ namespace InteractiveOfficeClient
         {
             BtnStartWorking.Sensitive = !IsWorking;
             BtnStartBreak.Sensitive = IsWorking;
-        }
+}
 
         protected override bool OnVisibilityNotifyEvent(EventVisibility evnt)
         {

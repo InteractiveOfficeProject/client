@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
  -
 
+## [0.0.3]
+ - Display the time left
+
 ## [0.0.2]
  - Added basic UI elements for workflow (start working, start break)
  - Added MVP workflow: toggle working and pause
