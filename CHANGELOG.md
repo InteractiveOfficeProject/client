@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
  - Added basic UI elements for workflow (start working, start break)
-
+ - Added MVP workflow: toggle working and pause
 
 ## [0.0.1]
 

@@ -29,8 +29,9 @@ Add them to the project, place them in the Resources folder, and set them to
 
  * [x] Add "minimize to tray" to keep the app running when window is closed. Useful links:
    * http://www.mono-project.com/docs/gui/gtksharp/widgets/notification-icon/
- * [ ] Add the simplified tracking work-flow: ["start working"] -(30min)-> ["start break"] -(10min)-> ["start working"] ...
+ * [x] Add the simplified tracking work-flow: ["start working"] -(30min)-> ["start break"] -(5min)-> ["start working"] ...
    * Most minimal application
+   * App gets invisible on starting something, visible when it's done
  * [ ] Add "start on boot"
    * No research done yet
  * [ ] Then extend according to https://drive.google.com/drive/folders/0B6Tl_UdBt6QYWUtTSExzQ2toOHc ?
