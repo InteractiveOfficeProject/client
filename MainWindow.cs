@@ -45,13 +45,15 @@ namespace InteractiveOfficeClient
         private void OnTimerCallback(object state)
         {
             TimeLeft = TimeLeft - 1;
+            LabelTimeLeft.Text = $"Time Left: {TimeLeft}s";
+
             if (TimeLeft <= 0)
             {
                 Deiconify();
-
                 TimeLeft = 0;
+                LabelTimeLeft.Text = $"";
             }
-            LabelTimeLeft.Text = $"Time Left: {TimeLeft}s";
+
         }
 
         private void SetWorkingState(bool newState)
