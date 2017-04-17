@@ -8,5 +8,13 @@
     	readonly Activity[] Activities;
     	readonly string Status;
 
+        public BreakSeekerRequest(int breakId, User user, string joined, Activity[] activities, string status)
+        {
+            BreakID = breakId;
+            User = user;
+            Joined = joined;
+            Activities = activities;
+            Status = status;
+        }
     }
 }
