@@ -47,7 +47,8 @@ namespace InteractiveOfficeClient
             TimeLeft = TimeLeft - 1;
             if (TimeLeft <= 0)
             {
-                Visible = true;
+                Deiconify();
+
                 TimeLeft = 0;
             }
             LabelTimeLeft.Text = $"Time Left: {TimeLeft}s";
