@@ -36,13 +36,13 @@
     <Compile Include="InteractiveOfficeClient.cs" />
     <Compile Include="IopTrayIcon.cs" />
     <Compile Include="MainWindow.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Activity.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="BreakSeekerRequest.cs" />
-    <Compile Include="BreakMatch.cs" />
-    <Compile Include="FeedbackModel.cs" />
-    <Compile Include="ApiResponse.cs" />
+    <Compile Include="Models/User.cs" />
+    <Compile Include="Models/Activity.cs" />
+    <Compile Include="Models/Room.cs" />
+    <Compile Include="Models/BreakSeekerRequest.cs" />
+    <Compile Include="Models/BreakMatch.cs" />
+    <Compile Include="Models/FeedbackModel.cs" />
+    <Compile Include="Models/ApiResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
