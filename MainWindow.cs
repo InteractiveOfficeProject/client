@@ -17,8 +17,15 @@ namespace InteractiveOfficeClient
 
         private enum TimerState {Created, Running, Paused};
 
-        private static readonly int INTERVAL_1_SECOND_AS_MILLIS = 1000;
-        private static readonly int INTERVAL_5_MIN_AS_SECONDS = 5*60;
+        private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
+
+        #if DEBUG
+        private static readonly int INTERVAL_MINUTE = 1;
+        #else 
+        private static readonly int INTERVAL_MINUTE = 60;
+        #endif
+
+        private static readonly int INTERVAL_5_MIN_AS_SECONDS = 5*INTERVAL_MINUTE;
         private static readonly int INTERVAL_25_MIN_AS_SECONDS = 5*INTERVAL_5_MIN_AS_SECONDS;
 
         private int TimeLeft = 0;
@@ -41,12 +48,6 @@ namespace InteractiveOfficeClient
 
             new System.Threading.Timer(new TimerCallback(OnTimerCallback), "", TimeSpan.Zero, TimeSpanTickInterval);
         }
-
-        #if DEBUG
-        private TimeSpan TimeSpanTickInterval = TimeSpan.FromMilliseconds(10);
-        #else
-        private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
-        #endif
 
         private void OnTimerCallback(object state)
         {
