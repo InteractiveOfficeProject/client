@@ -14,8 +14,7 @@ namespace InteractiveOfficeClient
 
 
         private bool IsWorking = false;
-
-        private enum TimerState {Created, Running, Paused};
+        private bool IsReceivingTicks = false;
 
         private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
 
@@ -37,8 +36,6 @@ namespace InteractiveOfficeClient
             Grid.AttachNextTo(BtnStartWorking, LabelTimeLeft, PositionType.Bottom, 1, 1);
             Grid.AttachNextTo(BtnStartBreak, BtnStartWorking, PositionType.Bottom, 1, 1);
 
-            DeleteEvent += delegate { Iconify(); };
-
             BtnStartWorking.Clicked += delegate {
                 SetWorkingState(true);
             };
@@ -49,19 +46,32 @@ namespace InteractiveOfficeClient
             new System.Threading.Timer(new TimerCallback(OnTimerCallback), "", TimeSpan.Zero, TimeSpanTickInterval);
         }
 
+        protected override bool OnDeleteEvent(Event evnt)
+        {
+            Iconify();
+            Visible = false;
+            return true;
+        }
+
         private void OnTimerCallback(object state)
         {
+            if(!IsReceivingTicks){
+                return;
+            }
+
             TimeLeft = TimeLeft - 1;
             LabelTimeLeft.Text = $"Time Left: {TimeLeft}s";
 
             if (TimeLeft <= 0)
             {
                 Deiconify();
+                Visible = true;
                 TimeLeft = 0;
                 LabelTimeLeft.Text = "";
                 if (IsWorking)
                 {
                     Console.WriteLine("Show Activities");
+                    IsReceivingTicks = false;
                 }
             }
         }
@@ -77,6 +87,8 @@ namespace InteractiveOfficeClient
 
             UpdateUi();
             Visible = false;
+            Iconify();
+            IsReceivingTicks = true;
         }
 
         private void UpdateUi()
