@@ -39,8 +39,14 @@ namespace InteractiveOfficeClient
 
             ShowAll();
 
-            new System.Threading.Timer(new TimerCallback(OnTimerCallback), "", TimeSpan.Zero, TimeSpan.FromSeconds(1));
+            new System.Threading.Timer(new TimerCallback(OnTimerCallback), "", TimeSpan.Zero, TimeSpanTickInterval);
         }
+
+        #if DEBUG
+        private TimeSpan TimeSpanTickInterval = TimeSpan.FromMilliseconds(10);
+        #else
+        private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
+        #endif
 
         private void OnTimerCallback(object state)
         {
@@ -51,9 +57,12 @@ namespace InteractiveOfficeClient
             {
                 Deiconify();
                 TimeLeft = 0;
-                LabelTimeLeft.Text = $"";
+                LabelTimeLeft.Text = "";
+                if (IsWorking)
+                {
+                    Console.WriteLine("Show Activities");
+                }
             }
-
         }
 
         private void SetWorkingState(bool newState)
