@@ -43,6 +43,7 @@
     <Compile Include="Models/BreakMatch.cs" />
     <Compile Include="Models/FeedbackModel.cs" />
     <Compile Include="Models/ApiResponse.cs" />
+    <Compile Include="ApplicationTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
@@ -78,7 +79,19 @@
     <Content Include="CHANGELOG.md" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
+    <EmbeddedResource Include="Resources\alert_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\alter_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\app_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\working.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
