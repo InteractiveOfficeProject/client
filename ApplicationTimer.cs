@@ -7,17 +7,12 @@ namespace InteractiveOfficeClient
     {
         private readonly MainWindow Context;
 
-        private bool _isWorking;
 
-        public bool IsWorking => _appState == AppState.Working;
-
-        private AppState _appState = AppState.Paused;
 
         public void ChangeState(AppState newAppState)
         {
-            _appState = newAppState;
 
-            switch (_appState)
+            switch (newAppState)
             {
                 case AppState.Working:
                 case AppState.Break:
@@ -34,7 +29,7 @@ namespace InteractiveOfficeClient
 
         private void ResetTimer()
         {
-            if (IsWorking)
+            if (_app.IsWorking)
             {
                 TimeLeft = INTERVAL_25_MIN_AS_SECONDS;
             }
@@ -44,7 +39,7 @@ namespace InteractiveOfficeClient
             }
         }
 
-        private bool IsReceivingTicks => _appState == AppState.Break || _appState == AppState.Working;
+        private bool IsReceivingTicks => !_app.IsNotifying;
 
         private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
 
@@ -58,11 +53,12 @@ namespace InteractiveOfficeClient
         private static readonly int INTERVAL_25_MIN_AS_SECONDS = 5 * INTERVAL_5_MIN_AS_SECONDS;
 
         private int TimeLeft = 0;
+        private readonly InteractiveOfficeClient _app;
 
 
-        public ApplicationTimer(MainWindow Context)
+        public ApplicationTimer(InteractiveOfficeClient app)
         {
-            this.Context = Context;
+            _app = app;
             new System.Threading.Timer(new TimerCallback(OnTimerCallback), AppState.Paused, TimeSpan.Zero,
                 TimeSpanTickInterval);
         }

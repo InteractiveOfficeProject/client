@@ -11,20 +11,19 @@ namespace InteractiveOfficeClient
         private readonly Button BtnStartWorking = new Button("Start Working");
         private readonly Button BtnStartBreak = new Button("Start Break");
         private readonly Label LabelTimeLeft = new Label("");
-        private readonly ApplicationTimer _applicationTimer;
+        private readonly InteractiveOfficeClient _app;
 
 
-        public MainWindow() : base("Interactive Office Project")
+        public MainWindow(InteractiveOfficeClient interactiveOfficeClient) : base("Interactive Office Project")
         {
+            this._app = interactiveOfficeClient;
             Add(Grid);
             Grid.Attach(LabelTimeLeft, 0, 0, 1, 1);
             Grid.AttachNextTo(BtnStartWorking, LabelTimeLeft, PositionType.Bottom, 1, 1);
             Grid.AttachNextTo(BtnStartBreak, BtnStartWorking, PositionType.Bottom, 1, 1);
 
-            BtnStartWorking.Clicked += delegate { SetWorkingState(true); };
-            BtnStartBreak.Clicked += delegate { SetWorkingState(false); };
-
-            _applicationTimer = new ApplicationTimer(this);
+            BtnStartWorking.Clicked += delegate { SetWorkingState(AppState.Working); };
+            BtnStartBreak.Clicked += delegate { SetWorkingState(AppState.Break); };
 
             ShowAll();
         }
@@ -51,16 +50,9 @@ namespace InteractiveOfficeClient
             return true;
         }
 
-        private void SetWorkingState(bool newState)
+        private void SetWorkingState(AppState newState)
         {
-            if (newState)
-            {
-                _applicationTimer.ChangeState(AppState.Working);
-            }
-            else
-            {
-                _applicationTimer.ChangeState(AppState.Break);
-            }
+            _app.SetState(newState);
             UpdateUi();
             Visible = false;
             Iconify();
@@ -68,8 +60,8 @@ namespace InteractiveOfficeClient
 
         private void UpdateUi()
         {
-            BtnStartWorking.Sensitive = !_applicationTimer.IsWorking;
-            BtnStartBreak.Sensitive = _applicationTimer.IsWorking;
+            BtnStartWorking.Sensitive = !_app.IsWorking;
+            BtnStartBreak.Sensitive = _app.IsWorking;
         }
 
         protected override bool OnVisibilityNotifyEvent(EventVisibility evnt)

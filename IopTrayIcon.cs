@@ -6,9 +6,9 @@ namespace InteractiveOfficeClient
 {
     public class IopTrayIcon : Gtk.StatusIcon
     {
-        public IopTrayIcon(Gtk.Window window) : base(Pixbuf.LoadFromResource("InteractiveOfficeClient.Resources.app_icon.png"))
+        public IopTrayIcon(InteractiveOfficeClient app) : base(Pixbuf.LoadFromResource("InteractiveOfficeClient.Resources.app_icon.png"))
         {
-            Activate += delegate { window.Visible = !window.Visible; };
+            Activate += delegate { app.ToggleAppVisibility(); };
             PopupMenu += OnTrayIconPopup;
             TooltipText = "Interactive Office";
             Visible = true;
