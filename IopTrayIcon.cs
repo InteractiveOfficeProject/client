@@ -6,7 +6,7 @@ namespace InteractiveOfficeClient
 {
     public class IopTrayIcon : Gtk.StatusIcon
     {
-        private readonly Menu popupMenu;
+        private readonly Menu _popupMenu;
 
         public IopTrayIcon(InteractiveOfficeClient app) : base(
             Pixbuf.LoadFromResource("InteractiveOfficeClient.Resources.app_icon.png"))
@@ -16,7 +16,7 @@ namespace InteractiveOfficeClient
             TooltipText = "Interactive Office";
             Visible = true;
 
-            popupMenu = new Menu();
+            _popupMenu = new Menu();
 
             var menuItemStartWork = AddImageMenuItem("Start Work", Gtk.Stock.MediaPlay);
             menuItemStartWork.Activated += delegate
@@ -36,15 +36,15 @@ namespace InteractiveOfficeClient
 
         private void OnTrayIconPopup(object o, PopupMenuArgs popupMenuArgs)
         {
-            popupMenu.ShowAll();
-            popupMenu.Popup();
+            _popupMenu.ShowAll();
+            _popupMenu.Popup();
         }
 
         private  ImageMenuItem AddImageMenuItem(string label, string quit)
         {
             ImageMenuItem menuItem = new ImageMenuItem(label);
             menuItem.Image = new Gtk.Image(quit, IconSize.Menu);
-            popupMenu.Add(menuItem);
+            _popupMenu.Add(menuItem);
             return menuItem;
         }
     }

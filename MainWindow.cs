@@ -7,26 +7,26 @@ namespace InteractiveOfficeClient
 {
     public class MainWindow : Gtk.Window
     {
-        private readonly Grid Grid = new Grid();
-        private readonly Button BtnStartWorking = new Button("Start Working");
-        private readonly Button BtnStartBreak = new Button("Start Break");
-        private readonly Label LabelTimeLeft = new Label("");
+        private readonly Grid _grid = new Grid();
+        private readonly Button _btnStartWorking = new Button("Start Working");
+        private readonly Button _btnStartBreak = new Button("Start Break");
+        private readonly Label _labelTimeLeft = new Label("");
         private readonly InteractiveOfficeClient _app;
 
 
         public MainWindow(InteractiveOfficeClient interactiveOfficeClient) : base("Interactive Office Project")
         {
-            this._app = interactiveOfficeClient;
-            Add(Grid);
-            Grid.Attach(LabelTimeLeft, 0, 0, 1, 1);
-            Grid.AttachNextTo(BtnStartWorking, LabelTimeLeft, PositionType.Bottom, 1, 1);
-            Grid.AttachNextTo(BtnStartBreak, BtnStartWorking, PositionType.Bottom, 1, 1);
+            _app = interactiveOfficeClient;
+            Add(_grid);
+            _grid.Attach(_labelTimeLeft, 0, 0, 1, 1);
+            _grid.AttachNextTo(_btnStartWorking, _labelTimeLeft, PositionType.Bottom, 1, 1);
+            _grid.AttachNextTo(_btnStartBreak, _btnStartWorking, PositionType.Bottom, 1, 1);
 
-            BtnStartWorking.Clicked += delegate
+            _btnStartWorking.Clicked += delegate
             {
                 _app.State = AppState.Working;
             };
-            BtnStartBreak.Clicked += delegate
+            _btnStartBreak.Clicked += delegate
             {
                 _app.State = AppState.Break;
             };
@@ -51,14 +51,14 @@ namespace InteractiveOfficeClient
         {
             if (_app.TimeLeft <= 0)
             {
-                LabelTimeLeft.Text = "";
+                _labelTimeLeft.Text = "";
             }
             else
             {
-                LabelTimeLeft.Text = $"{_app.TimeLeft}s";
+                _labelTimeLeft.Text = $"{_app.TimeLeft}s";
             }
-            BtnStartWorking.Sensitive = !_app.IsWorking;
-            BtnStartBreak.Sensitive = _app.IsWorking;
+            _btnStartWorking.Sensitive = !_app.IsWorking;
+            _btnStartBreak.Sensitive = _app.IsWorking;
         }
 
         protected override bool OnVisibilityNotifyEvent(EventVisibility evnt)

@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace InteractiveOfficeClient
 {
-    public partial class ApplicationTimer
+    public class ApplicationTimer
     {
         public void ChangeState(AppState state)
         {
@@ -20,26 +20,26 @@ namespace InteractiveOfficeClient
         {
             if (_app.IsWorking)
             {
-                TimeLeft = INTERVAL_25_MIN_AS_SECONDS;
+                _timeLeft = Interval25MinAsSeconds;
             }
             else
             {
-                TimeLeft = INTERVAL_5_MIN_AS_SECONDS;
+                _timeLeft = Interval5MinAsSeconds;
             }
         }
 
-        private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
+        private static readonly TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
 
 #if DEBUG
-        private static readonly int INTERVAL_MINUTE = 1;
+        private static readonly int IntervalMinute = 1;
 #else
-        private static readonly int INTERVAL_MINUTE = 60;
+        private static readonly int IntervalMinute = 60;
 #endif
 
-        private static readonly int INTERVAL_5_MIN_AS_SECONDS = 5 * INTERVAL_MINUTE;
-        private static readonly int INTERVAL_25_MIN_AS_SECONDS = 5 * INTERVAL_5_MIN_AS_SECONDS;
+        private static readonly int Interval5MinAsSeconds = 5 * IntervalMinute;
+        private static readonly int Interval25MinAsSeconds = 5 * Interval5MinAsSeconds;
 
-        private int TimeLeft = 0;
+        private int _timeLeft = 0;
         private readonly InteractiveOfficeClient _app;
 
 
@@ -57,15 +57,15 @@ namespace InteractiveOfficeClient
                 return;
             }
 
-            TimeLeft = TimeLeft - 1;
+            _timeLeft = _timeLeft - 1;
 
-            if (TimeLeft <= 0)
+            if (_timeLeft <= 0)
             {
                 _app.Show();
-                TimeLeft = 0;
+                _timeLeft = 0;
                 _app.TriggerNotification();
             }
-            _app.TimeLeft = TimeLeft;
+            _app.TimeLeft = _timeLeft;
         }
     }
 }
