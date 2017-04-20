@@ -5,21 +5,13 @@ namespace InteractiveOfficeClient
 {
     public partial class ApplicationTimer
     {
-
-        public void ChangeState(AppState newAppState)
+        public void ChangeState(AppState state)
         {
-
-            switch (newAppState)
+            switch (state)
             {
                 case AppState.Working:
                 case AppState.Break:
                     ResetTimer();
-                    break;
-                case AppState.NotifyingBreak:
-                    _app.SetState(AppState.NotifyingBreak);
-                    break;
-                case AppState.NotifyingWork:
-                    _app.SetState(AppState.NotifyingWork);
                     break;
             }
         }
@@ -60,7 +52,7 @@ namespace InteractiveOfficeClient
 
         private void OnTimerCallback(object state)
         {
-            if (_app.IsNotifying)
+            if (_app.IsPaused || _app.IsNotifying)
             {
                 return;
             }
@@ -71,14 +63,7 @@ namespace InteractiveOfficeClient
             {
                 _app.Show();
                 TimeLeft = 0;
-                if (_app.IsWorking)
-                {
-                    ChangeState(AppState.NotifyingBreak);
-                }
-                else
-                {
-                    ChangeState(AppState.NotifyingWork);
-                }
+                _app.TriggerNotification();
             }
             _app.TimeLeft = TimeLeft;
         }

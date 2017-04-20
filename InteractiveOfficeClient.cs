@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.IO;
 using System.Reflection;
 using Gdk;
@@ -14,8 +15,6 @@ namespace InteractiveOfficeClient
         private ApplicationTimer _applicationTimer;
         private MainWindow mainWindow;
 
-        public bool IsWorking => _appState == AppState.Working;
-        public bool IsNotifying => _appState == AppState.Break || _appState == AppState.Working;
 
         private int _timeLeft;
 
@@ -31,7 +30,21 @@ namespace InteractiveOfficeClient
 
 
         private AppState _appState = AppState.Paused;
+        public bool IsPaused => State == AppState.Paused;
+        public bool IsWorking => State == AppState.Working;
+        public bool IsNotifying => State == AppState.NotifyingBreak || State == AppState.NotifyingWork;
 
+        public AppState State
+        {
+            get { return _appState; }
+            set
+            {
+                Console.WriteLine($"new state: {value}");
+                _appState = value;
+                _applicationTimer.ChangeState(value);
+                mainWindow.UpdateUi();
+            }
+        }
         private InteractiveOfficeClient()
         {
         }
@@ -53,11 +66,6 @@ namespace InteractiveOfficeClient
             Application.Run();
         }
 
-        public void SetState(AppState newState)
-        {
-            _applicationTimer.ChangeState(newState);
-        }
-
         public void ToggleAppVisibility()
         {
             mainWindow.Visible = !mainWindow.Visible;
@@ -67,6 +75,18 @@ namespace InteractiveOfficeClient
         {
             mainWindow.Deiconify();
             mainWindow.Visible = true;
+        }
+
+        public void TriggerNotification()
+        {
+            if (IsWorking)
+            {
+                State = AppState.NotifyingBreak;
+            }
+            else
+            {
+                State = AppState.NotifyingWork;
+            }
         }
     }
 }

@@ -19,10 +19,16 @@ namespace InteractiveOfficeClient
             popupMenu = new Menu();
 
             var menuItemStartWork = AddImageMenuItem("Start Work", Gtk.Stock.MediaPlay);
-            menuItemStartWork.Activated += delegate { app.SetState(AppState.Working); };
+            menuItemStartWork.Activated += delegate
+            {
+                app.State = AppState.Working;
+            };
 
             var menuItemStartPause = AddImageMenuItem("Start Break", Gtk.Stock.MediaPause);
-            menuItemStartPause.Activated += delegate { app.SetState(AppState.Paused); };
+            menuItemStartPause.Activated += delegate
+            {
+                app.State = AppState.Paused;
+            };
 
             var menuItemQuit = AddImageMenuItem("Quit", Gtk.Stock.Quit);
             menuItemQuit.Activated += delegate { Application.Quit(); };

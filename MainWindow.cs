@@ -22,25 +22,16 @@ namespace InteractiveOfficeClient
             Grid.AttachNextTo(BtnStartWorking, LabelTimeLeft, PositionType.Bottom, 1, 1);
             Grid.AttachNextTo(BtnStartBreak, BtnStartWorking, PositionType.Bottom, 1, 1);
 
-            BtnStartWorking.Clicked += delegate { SetWorkingState(AppState.Working); };
-            BtnStartBreak.Clicked += delegate { SetWorkingState(AppState.Break); };
+            BtnStartWorking.Clicked += delegate
+            {
+                _app.State = AppState.Working;
+            };
+            BtnStartBreak.Clicked += delegate
+            {
+                _app.State = AppState.Break;
+            };
 
             ShowAll();
-        }
-
-        public int TimeLeft
-        {
-            set
-            {
-                if (value <= 0)
-                {
-                    LabelTimeLeft.Text = "";
-                }
-                else
-                {
-                    LabelTimeLeft.Text = $"{value}s";
-                }
-            }
         }
 
         protected override bool OnDeleteEvent(Event evnt)
@@ -50,16 +41,22 @@ namespace InteractiveOfficeClient
             return true;
         }
 
-        private void SetWorkingState(AppState newState)
+        private void SetState(AppState newState)
         {
-            _app.SetState(newState);
-            UpdateUi();
             Visible = false;
             Iconify();
         }
 
         public void UpdateUi()
         {
+            if (_app.TimeLeft <= 0)
+            {
+                LabelTimeLeft.Text = "";
+            }
+            else
+            {
+                LabelTimeLeft.Text = $"{_app.TimeLeft}s";
+            }
             BtnStartWorking.Sensitive = !_app.IsWorking;
             BtnStartBreak.Sensitive = _app.IsWorking;
         }
