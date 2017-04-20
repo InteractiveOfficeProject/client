@@ -3,38 +3,59 @@ using System.Threading;
 
 namespace InteractiveOfficeClient
 {
-    public class ApplicationTimer
+    public partial class ApplicationTimer
     {
         private readonly MainWindow Context;
 
         private bool _isWorking;
 
-        public bool IsWorking
-        {
-            get { return _isWorking; }
-            set
-            {
-                _isWorking = value;
-                if (_isWorking)
-                    TimeLeft = INTERVAL_25_MIN_AS_SECONDS;
-                else
-                    TimeLeft = INTERVAL_5_MIN_AS_SECONDS;
-                IsReceivingTicks = true;
-            }
-    }
+        public bool IsWorking => _appState == AppState.Working;
 
-        private bool IsReceivingTicks = false;
+        private AppState _appState = AppState.Paused;
+
+        public void ChangeState(AppState newAppState)
+        {
+            _appState = newAppState;
+
+            switch (_appState)
+            {
+                case AppState.Working:
+                case AppState.Break:
+                    ResetTimer();
+                    break;
+                case AppState.NotifyingBreak:
+                    Context.NotifyBreak();
+                    break;
+                case AppState.NotifyingWork:
+                    Context.NotifyWork();
+                    break;
+            }
+        }
+
+        private void ResetTimer()
+        {
+            if (IsWorking)
+            {
+                TimeLeft = INTERVAL_25_MIN_AS_SECONDS;
+            }
+            else
+            {
+                TimeLeft = INTERVAL_5_MIN_AS_SECONDS;
+            }
+        }
+
+        private bool IsReceivingTicks => _appState == AppState.Break || _appState == AppState.Working;
 
         private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
 
-        #if DEBUG
+#if DEBUG
         private static readonly int INTERVAL_MINUTE = 1;
-        #else
+#else
         private static readonly int INTERVAL_MINUTE = 60;
-        #endif
+#endif
 
-        private static readonly int INTERVAL_5_MIN_AS_SECONDS = 5*INTERVAL_MINUTE;
-        private static readonly int INTERVAL_25_MIN_AS_SECONDS = 5*INTERVAL_5_MIN_AS_SECONDS;
+        private static readonly int INTERVAL_5_MIN_AS_SECONDS = 5 * INTERVAL_MINUTE;
+        private static readonly int INTERVAL_25_MIN_AS_SECONDS = 5 * INTERVAL_5_MIN_AS_SECONDS;
 
         private int TimeLeft = 0;
 
@@ -42,12 +63,14 @@ namespace InteractiveOfficeClient
         public ApplicationTimer(MainWindow Context)
         {
             this.Context = Context;
-            new System.Threading.Timer(new TimerCallback(OnTimerCallback), "", TimeSpan.Zero, TimeSpanTickInterval);
+            new System.Threading.Timer(new TimerCallback(OnTimerCallback), AppState.Paused, TimeSpan.Zero,
+                TimeSpanTickInterval);
         }
 
         private void OnTimerCallback(object state)
         {
-            if(!IsReceivingTicks){
+            if (!IsReceivingTicks)
+            {
                 return;
             }
 
@@ -60,12 +83,14 @@ namespace InteractiveOfficeClient
                 TimeLeft = 0;
                 if (IsWorking)
                 {
-                    Console.WriteLine("Show Activities");
-                    IsReceivingTicks = false;
+                    ChangeState(AppState.NotifyingBreak);
+                }
+                else
+                {
+                    ChangeState(AppState.NotifyingWork);
                 }
             }
             Context.TimeLeft = TimeLeft;
         }
-
     }
 }

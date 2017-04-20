@@ -53,7 +53,14 @@ namespace InteractiveOfficeClient
 
         private void SetWorkingState(bool newState)
         {
-            _applicationTimer.IsWorking = newState;
+            if (newState)
+            {
+                _applicationTimer.ChangeState(AppState.Working);
+            }
+            else
+            {
+                _applicationTimer.ChangeState(AppState.Break);
+            }
             UpdateUi();
             Visible = false;
             Iconify();
@@ -70,6 +77,16 @@ namespace InteractiveOfficeClient
             var baseResult = base.OnVisibilityNotifyEvent(evnt);
             UpdateUi();
             return baseResult;
+        }
+
+        public void NotifyBreak()
+        {
+            Console.WriteLine("NotifyBreak");
+        }
+
+        public void NotifyWork()
+        {
+            Console.WriteLine("NotifyWork");
         }
     }
 }
