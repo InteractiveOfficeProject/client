@@ -58,7 +58,7 @@ namespace InteractiveOfficeClient
             Iconify();
         }
 
-        private void UpdateUi()
+        public void UpdateUi()
         {
             BtnStartWorking.Sensitive = !_app.IsWorking;
             BtnStartBreak.Sensitive = _app.IsWorking;

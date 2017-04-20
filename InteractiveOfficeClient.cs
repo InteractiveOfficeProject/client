@@ -7,33 +7,50 @@ using GLib;
 namespace InteractiveOfficeClient
 {
     using Gtk;
-    public class InteractiveOfficeClient {
+
+    public class InteractiveOfficeClient
+    {
         private static InteractiveOfficeClient Instance = new InteractiveOfficeClient();
-        private readonly ApplicationTimer _applicationTimer;
-        private readonly MainWindow mainWindow;
+        private ApplicationTimer _applicationTimer;
+        private MainWindow mainWindow;
 
         public bool IsWorking => _appState == AppState.Working;
         public bool IsNotifying => _appState == AppState.Break || _appState == AppState.Working;
+
+        private int _timeLeft;
+
+        public int TimeLeft
+        {
+            get { return _timeLeft; }
+            set
+            {
+                _timeLeft = value;
+                mainWindow.UpdateUi();
+            }
+        }
 
 
         private AppState _appState = AppState.Paused;
 
         private InteractiveOfficeClient()
         {
-            mainWindow = new MainWindow(this);
-            _applicationTimer = new ApplicationTimer(this);
-            new IopTrayIcon(this);
         }
+
         static void Main()
         {
-            InteractiveOfficeClient.Instance.Run();
+            Instance.Run();
         }
 
         public void Run()
         {
             Application.Init();
 
-            Application.Run ();
+            mainWindow = new MainWindow(this);
+            _applicationTimer = new ApplicationTimer(this);
+            new IopTrayIcon(this);
+
+
+            Application.Run();
         }
 
         public void SetState(AppState newState)
@@ -45,6 +62,11 @@ namespace InteractiveOfficeClient
         {
             mainWindow.Visible = !mainWindow.Visible;
         }
-    }
 
+        public void Show()
+        {
+            mainWindow.Deiconify();
+            mainWindow.Visible = true;
+        }
+    }
 }

@@ -5,9 +5,6 @@ namespace InteractiveOfficeClient
 {
     public partial class ApplicationTimer
     {
-        private readonly MainWindow Context;
-
-
 
         public void ChangeState(AppState newAppState)
         {
@@ -19,10 +16,10 @@ namespace InteractiveOfficeClient
                     ResetTimer();
                     break;
                 case AppState.NotifyingBreak:
-                    Context.NotifyBreak();
+                    _app.SetState(AppState.NotifyingBreak);
                     break;
                 case AppState.NotifyingWork:
-                    Context.NotifyWork();
+                    _app.SetState(AppState.NotifyingWork);
                     break;
             }
         }
@@ -38,8 +35,6 @@ namespace InteractiveOfficeClient
                 TimeLeft = INTERVAL_5_MIN_AS_SECONDS;
             }
         }
-
-        private bool IsReceivingTicks => !_app.IsNotifying;
 
         private TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
 
@@ -65,7 +60,7 @@ namespace InteractiveOfficeClient
 
         private void OnTimerCallback(object state)
         {
-            if (!IsReceivingTicks)
+            if (_app.IsNotifying)
             {
                 return;
             }
@@ -74,10 +69,9 @@ namespace InteractiveOfficeClient
 
             if (TimeLeft <= 0)
             {
-                Context.Deiconify();
-                Context.Visible = true;
+                _app.Show();
                 TimeLeft = 0;
-                if (IsWorking)
+                if (_app.IsWorking)
                 {
                     ChangeState(AppState.NotifyingBreak);
                 }
@@ -86,7 +80,7 @@ namespace InteractiveOfficeClient
                     ChangeState(AppState.NotifyingWork);
                 }
             }
-            Context.TimeLeft = TimeLeft;
+            _app.TimeLeft = TimeLeft;
         }
     }
 }
