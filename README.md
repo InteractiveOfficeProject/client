@@ -25,6 +25,12 @@ Add them to the project, place them in the Resources folder, and set them to
  * On Linux you can use `build-release.sh` to create a distributable from the source
  * Push the created tag via `git push --tags` and upload the file `bin/Release/InteractiveOfficeClient.exe` to the newly created Github Release
 
+## Running
+
+ * Download one of the releases. Execute `mono InteractiveOfficeClient.exe` on Linux
+   * Untested on Windows/Mac
+ * You must have GTK installed (untested)
+
 ## Next Steps
 
  * [x] Add "minimize to tray" to keep the app running when window is closed. Useful links:
@@ -35,4 +41,5 @@ Add them to the project, place them in the Resources folder, and set them to
  * [ ] Add "start on boot"
    * No research done yet
  * [ ] Then extend according to https://drive.google.com/drive/folders/0B6Tl_UdBt6QYWUtTSExzQ2toOHc ?
-  * 
+  * Notifications: libnotify
+ * [ ] Adapt release script to bundle build with dlls in zip
