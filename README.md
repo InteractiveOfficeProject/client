@@ -27,9 +27,10 @@ Add them to the project, place them in the Resources folder, and set them to
 
 ## Running
 
- * Download one of the releases. Execute `mono InteractiveOfficeClient.exe` on Linux
+ * Download one of the releases as 7z and unpack it
+ * Run it: `mono InteractiveOfficeClient.exe` on Linux, double-click on the `InteractiveOfficeClient.exe` in Windows
    * Untested on Windows/Mac
- * You must have GTK installed (untested)
+ * You must have GTK installed (untested/unknown)
 
 ## Next Steps
 
