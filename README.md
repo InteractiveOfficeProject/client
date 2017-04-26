@@ -42,4 +42,4 @@ Add them to the project, place them in the Resources folder, and set them to
    * No research done yet
  * [ ] Then extend according to https://drive.google.com/drive/folders/0B6Tl_UdBt6QYWUtTSExzQ2toOHc ?
   * Notifications: libnotify
- * [ ] Adapt release script to bundle build with dlls in zip
+ * [X] Adapt release script to bundle build with dlls in zip

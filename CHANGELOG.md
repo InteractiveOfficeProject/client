@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
  -
 
+## [0.0.4]
+ - Refactoring
+ - Better Release workflow
+
 ## [0.0.3]
  - Display the time left
 
