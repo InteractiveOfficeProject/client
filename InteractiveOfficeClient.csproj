@@ -52,26 +52,50 @@
     <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\atk-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\atk-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="cairo-sharp, Version=1.12.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\cairo-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="cairo-sharp, Version=1.12.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\cairo-sharp.dll</HintPath>
     </Reference>
     <Reference Include="gdk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\gdk-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="gdk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\gdk-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="gio-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\gio-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="gio-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\gio-sharp.dll</HintPath>
     </Reference>
     <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\glib-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\glib-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="gtk-dotnet, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\gtk-dotnet.dll</HintPath>
+    </Reference>
+    <Reference Include="gtk-dotnet, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\gtk-dotnet.dll</HintPath>
     </Reference>
     <Reference Include="gtk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\gtk-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="gtk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\gtk-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="pango-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <HintPath>packages\gtk-sharp3.3.22.0.0\lib\net40\pango-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="pango-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <HintPath>packages\gtk-sharp-3.3.22.6.4\lib\net40\pango-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +104,8 @@
   <ItemGroup>
     <Content Include="build-release.sh" />
     <Content Include="CHANGELOG.md" />
+    <Content Include="IMG_20170328_095738.jpg" />
+    <Content Include="IMG_20170328_095759.jpg" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
     <EmbeddedResource Include="Resources\alert_1.png">
@@ -100,6 +126,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\gtk-sharp3.3.22.0.0\build\gtk-sharp3.targets" />
+  <Import Project="packages\gtk-sharp-3.3.22.6.4\build\net40\gtk-sharp-3.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
