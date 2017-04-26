@@ -31,12 +31,12 @@ namespace InteractiveOfficeClient
         private static readonly TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
 
 #if DEBUG
-        private static readonly int IntervalMinute = 1;
+        private static readonly double IntervalMinute = 0.3;
 #else
-        private static readonly int IntervalMinute = 60;
+        private static readonly double IntervalMinute = 60.0;
 #endif
 
-        private static readonly int Interval5MinAsSeconds = 5 * IntervalMinute;
+        private static readonly int Interval5MinAsSeconds = (int) (5 * IntervalMinute);
         private static readonly int Interval25MinAsSeconds = 5 * Interval5MinAsSeconds;
 
         private int _timeLeft = 0;

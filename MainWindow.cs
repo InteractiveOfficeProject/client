@@ -25,10 +25,12 @@ namespace InteractiveOfficeClient
             _btnStartWorking.Clicked += delegate
             {
                 _app.State = AppState.Working;
+                Close();
             };
             _btnStartBreak.Clicked += delegate
             {
                 _app.State = AppState.Break;
+                Close();
             };
 
             ShowAll();

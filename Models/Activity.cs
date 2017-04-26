@@ -2,11 +2,11 @@
 {
     public class Activity
     {
-        readonly int ActivityID;
-        readonly string Name;
-        private readonly int MaximumUsers;
+        public readonly int ActivityID;
+        public readonly string Name;
+        public  readonly int MaximumUsers;
 
-        Activity[] DefaultActivities = new Activity[]
+        public static readonly Activity[] DefaultActivities = new Activity[]
         {
             new Activity(-1, "Coffee Break", 0),
             new Activity(-2, "Walking", 0),
@@ -19,6 +19,11 @@
             ActivityID = activityId;
             Name = name;
             MaximumUsers = maximumUsers;
+        }
+
+        public override string ToString()
+        {
+            return $"[{ActivityID} - {Name} ({MaximumUsers})]";
         }
     }
 }

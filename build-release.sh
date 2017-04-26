@@ -7,4 +7,4 @@ fi
 TAG=$1
 git checkout $TAG
 xbuild /p:Configuration=Release InteractiveOfficeClient.sln
-7za InteractiveOfficeClient-$TAG.exe bin/Release/
+7za a InteractiveOfficeClient-$TAG.7z bin/Release/
