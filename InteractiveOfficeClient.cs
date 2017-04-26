@@ -87,13 +87,12 @@ namespace InteractiveOfficeClient
                 if (IsWorking)
                 {
                     State = AppState.NotifyingBreak;
-                    Console.WriteLine("Show Activities");
-                    ActivityWindow aw = new ActivityWindow(this);
-                    aw.ShowAll();
+                    new ActivityWindow(this).ShowAll();
                 }
                 else
                 {
                     State = AppState.NotifyingWork;
+                    new FeedbackWindow(this).ShowAll();
                 }
             });
         }

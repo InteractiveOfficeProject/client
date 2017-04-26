@@ -61,7 +61,6 @@ namespace InteractiveOfficeClient
 
             if (_timeLeft <= 0)
             {
-                _app.Show();
                 _timeLeft = 0;
                 _app.TriggerNotification();
             }

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
  -
 
+## [0.0.6]
+ - Showing "Go back to Work"-window now
+  - Feedback-Button is there but disabled
+
 ## [0.0.5]
  - Showing default activities for break
 
