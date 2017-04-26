@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
  -
 
+## [0.0.5]
+ - Showing default activities for break
+
 ## [0.0.4]
  - Refactoring
  - Better Release workflow
