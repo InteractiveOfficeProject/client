@@ -47,3 +47,10 @@ Add them to the project, place them in the Resources folder, and set them to
   * http://stackoverflow.com/questions/3429451/is-developing-in-mono-cross-platform
   * https://stephenhaunts.com/2014/04/28/cross-platform-development-with-mono/
   * http://www.c-sharpcorner.com/UploadFile/84c85b/building-cross-platform-net-app-using-mono/
+ * [ ] Add sound for notification
+ * [ ] Add Google Form link
+ * [ ] Heuristic Evaluation of Application
+ * [ ] Re-Design UI to look nice
+ * [ ] Add notification to foreground. Currently they're not necessarily 
+       in foreground
+ * [ ] Demo-Variant for Demo Day
