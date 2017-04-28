@@ -16,7 +16,6 @@ namespace InteractiveOfficeClient
             Add(_grid);
 
             Button feedbackButton = new Button("Give Feedback");
-            feedbackButton.Sensitive = false; // FIXME Enable Button after feedback url was added
             feedbackButton.Clicked += delegate { FeedbackButtonClicked(); };
             _grid.Attach(feedbackButton, 0, 0, 1, 1);
 
@@ -27,9 +26,8 @@ namespace InteractiveOfficeClient
         }
 
         private static void FeedbackButtonClicked()
-        {
-            // FIXME Open Browser...
-            Console.WriteLine("Open Browser for Feedback.");
+        { 
+            System.Diagnostics.Process.Start ("xdg-open https://l.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2F16LmorfEAbZp0Ugxh3tGwoobcUsxFAfOFgiezMD4K9wE%2F&h=ATPvUTvsJcpaXE0dmgeeLc21RZz0sdqxZYs9Tqc49tgQnA-Fw0rvfOZAYEs97-joPsHGCgj7u_iYpe53-1EORnlj7tAQDq6sFScaDyR9yVAsAG30RsZ2DBmG2AdsqBKm");
         }
 
         private void BackToWorkButtonClicked()
