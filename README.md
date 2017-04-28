@@ -55,3 +55,4 @@ Add them to the project, place them in the Resources folder, and set them to
  * [ ] Add notification to foreground. Currently they're not necessarily 
        in foreground
  * [ ] Demo-Variant for Demo Day
+ * [ ] Rewrite in Java?

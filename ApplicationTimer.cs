@@ -31,7 +31,7 @@ namespace InteractiveOfficeClient
         private static readonly TimeSpan TimeSpanTickInterval = TimeSpan.FromSeconds(1);
 
 #if DEBUG
-        private static readonly double IntervalMinute = 0.3;
+        private static readonly double IntervalMinute = 1.0;
 #else
         private static readonly double IntervalMinute = 60.0;
 #endif
