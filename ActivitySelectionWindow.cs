@@ -45,6 +45,7 @@ namespace InteractiveOfficeClient
                 _grid.Attach(b, 0, activityRowOffset + i, 1, 1);
             }
 
+            // TODO Enable continueButton only after something is selected
             Button continueButton = new Button("OK");
             continueButton.Clicked += delegate { ContinueButtonClicked(); };
             _grid.Attach(continueButton, 1, activityRowOffset + _activities.Length, 1, 1);
@@ -78,7 +79,15 @@ namespace InteractiveOfficeClient
             {
                 Console.WriteLine($"  {activity}");
             }
-            _app.State = AppState.Break;
+
+            if (FeatureToggles.ShowFakePeopleSelection)
+            {
+                new PeopleSelectionWindow(_app).ShowAll();
+            }
+            else
+            {
+                _app.State = AppState.Break;
+            }
             Close();
         }
 

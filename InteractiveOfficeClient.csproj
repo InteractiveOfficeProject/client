@@ -48,6 +48,7 @@
     <Compile Include="Models/ApiResponse.cs" />
     <Compile Include="ApplicationTimer.cs" />
     <Compile Include="AppState.cs" />
+    <Compile Include="PeopleSelectionWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
