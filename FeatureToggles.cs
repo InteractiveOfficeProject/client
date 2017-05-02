@@ -4,7 +4,7 @@
     {
         public static readonly bool FakeTakeBreakNotification = true;
         public static readonly bool ShowMissingActivityIcons = false;
-        public static readonly bool ShowFakePeopleSelection = false;
-
+        public static readonly bool ShowFakePeopleSelection = true;
+        public static readonly bool ShowMissingUserIcons = true;
     }
 }
