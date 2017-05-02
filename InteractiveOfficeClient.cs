@@ -80,7 +80,6 @@ namespace InteractiveOfficeClient
             mainWindow.Visible = true;
         }
 
-        [System.Obsolete("Use the one with AppState param instead")]
         public void TriggerNotification()
         {
                 if (IsWorking)
@@ -93,10 +92,8 @@ namespace InteractiveOfficeClient
                 }
         }
 
-        public void TriggerNotification(AppState newState)
+        private void TriggerNotification(AppState newState)
         {
-            State = newState;
-
             Gtk.Application.Invoke(delegate
             {
                 if (IsWorking)
@@ -108,6 +105,7 @@ namespace InteractiveOfficeClient
                     new FeedbackWindow(this).ShowAll();
                 }
             });
+            State = newState;
         }
     }
 }
