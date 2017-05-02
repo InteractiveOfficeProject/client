@@ -4,7 +4,7 @@
     {
         public readonly int ActivityID;
         public readonly string Name;
-        public  readonly int MaximumUsers;
+        public readonly int MaximumUsers;
 
         public static readonly Activity[] DefaultActivities = new Activity[]
         {
