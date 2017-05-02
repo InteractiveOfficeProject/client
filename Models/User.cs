@@ -2,12 +2,12 @@
 {
     public class User
     {
-    	readonly int UserID;
-    	readonly string Email;
-    	readonly string Password;
-    	readonly string FirstName;
-    	readonly string LastName;
-    	readonly string ProfilePictureURL;
+    	public readonly int UserID;
+    	public readonly string Email;
+    	public readonly string Password;
+    	public readonly string FirstName;
+    	public readonly string LastName;
+    	public readonly string ProfilePictureURL;
 
         public static readonly User[] DefaultUsers = new User[]
         {
@@ -23,6 +23,11 @@
             FirstName = firstName;
             LastName = lastName;
             ProfilePictureURL = profilePictureUrl;
+        }
+
+        public override string ToString()
+        {
+            return $"[{UserID} - {FirstName} {LastName} <{Email}> (Picture: {ProfilePictureURL})]";
         }
     }
 }
