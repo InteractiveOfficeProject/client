@@ -6,7 +6,7 @@ using InteractiveOfficeClient.Models;
 
 namespace InteractiveOfficeClient
 {
-    public class ActivityWindow : Gtk.Window
+    public class ActivitySelectionWindow : Gtk.Window
     {
         private InteractiveOfficeClient _app;
         private readonly Grid _grid = new Grid();
@@ -14,7 +14,7 @@ namespace InteractiveOfficeClient
 
         private readonly HashSet<Activity> _selectedActivites = new HashSet<Activity>();
 
-        public ActivityWindow(InteractiveOfficeClient interactiveOfficeClient) : base("Break Time")
+        public ActivitySelectionWindow(InteractiveOfficeClient interactiveOfficeClient) : base("Break Time")
         {
             this._app = interactiveOfficeClient;
             Add(_grid);

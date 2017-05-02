@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ActivityWindow.cs" />
+    <Compile Include="ActivitySelectionWindow.cs" />
     <Compile Include="FeatureToggles.cs" />
     <Compile Include="FeedbackWindow.cs" />
     <Compile Include="InteractiveOfficeClient.cs" />

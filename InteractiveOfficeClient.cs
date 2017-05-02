@@ -98,7 +98,7 @@ namespace InteractiveOfficeClient
             {
                 if (IsWorking)
                 {
-                    new ActivityWindow(this).ShowAll();
+                    new ActivitySelectionWindow(this).ShowAll();
                 }
                 else
                 {
