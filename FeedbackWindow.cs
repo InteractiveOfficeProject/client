@@ -29,10 +29,13 @@ namespace InteractiveOfficeClient
         }
 
         private void FeedbackButtonClicked()
-        { 
-            Process.Start ("https://goo.gl/forms/Ogz69BPZ9N7HJsBj2");
-            _feedbackButton.Label = "Starting Browser…";
-            _feedbackButton.Sensitive = false;
+        {
+            Gtk.Application.Invoke(delegate
+            {
+                Process.Start("https://goo.gl/forms/Ogz69BPZ9N7HJsBj2");
+                _feedbackButton.Label = "Starting Browser…";
+                _feedbackButton.Sensitive = false;
+            });
         }
 
         private void BackToWorkButtonClicked()
