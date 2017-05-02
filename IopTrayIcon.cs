@@ -21,13 +21,13 @@ namespace InteractiveOfficeClient
             var menuItemStartWork = AddImageMenuItem("Start Work", Gtk.Stock.MediaPlay);
             menuItemStartWork.Activated += delegate
             {
-                app.State = AppState.Working;
+                app.TriggerNotification(AppState.NotifyingWork);
             };
 
             var menuItemStartPause = AddImageMenuItem("Start Break", Gtk.Stock.MediaPause);
             menuItemStartPause.Activated += delegate
             {
-                app.State = AppState.Paused;
+                app.TriggerNotification(AppState.NotifyingBreak);
             };
 
             var menuItemQuit = AddImageMenuItem("Quit", Gtk.Stock.Quit);
