@@ -3,7 +3,7 @@
     public class FeatureToggles
     {
         public static readonly bool FakeTakeBreakNotification = true;
-        public static readonly bool ShowMissingActivityIcons = true;
+        public static readonly bool ShowMissingActivityIcons = false;
         public static readonly bool ShowFakePeopleSelection = false;
 
     }
