@@ -44,12 +44,13 @@ Add them to the project, place them in the Resources folder, and set them to
  * [ ] Then extend according to https://drive.google.com/drive/folders/0B6Tl_UdBt6QYWUtTSExzQ2toOHc ?
   * Notifications: libnotify
  * [X] Adapt release script to bundle build with dlls in zip
+ * [x] Add Google Form link
  * [ ] Cross-Platform Build
   * http://stackoverflow.com/questions/3429451/is-developing-in-mono-cross-platform
   * https://stephenhaunts.com/2014/04/28/cross-platform-development-with-mono/
   * http://www.c-sharpcorner.com/UploadFile/84c85b/building-cross-platform-net-app-using-mono/
- * [ ] Add sound for notification
- * [ ] Add Google Form link
+  * monodevelop contains an example GTK# application
+  * [ ] Add sound for notification
  * [ ] Heuristic Evaluation of Application
  * [ ] Re-Design UI to look nice
  * [ ] Add notification to foreground. Currently they're not necessarily 
