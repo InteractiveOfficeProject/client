@@ -23,12 +23,12 @@ namespace InteractiveOfficeClient.Windows
 
             _continueButton.Clicked += delegate { ContinueButtonClicked(); };
             _snoozeButton.Clicked += delegate { SnoozeButtonClicked(); };
-            _snoozeButton.Sensitive = false;
         }
 
         private void SnoozeButtonClicked()
         {
-            Console.WriteLine("snooze");
+            _app.SnoozeBreak();
+            Close();
         }
 
         private void ContinueButtonClicked()

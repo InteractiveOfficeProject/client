@@ -121,5 +121,11 @@ namespace InteractiveOfficeClient
                 new BreakNotificationWindow(this).ShowAll();
             }
         }
+
+        public void SnoozeBreak()
+        {
+            _appState = AppState.Working;
+            _applicationTimer.Snooze();
+        }
     }
 }

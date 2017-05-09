@@ -66,5 +66,10 @@ namespace InteractiveOfficeClient
             }
             _app.TimeLeft = _timeLeft;
         }
+
+        public void Snooze()
+        {
+            _timeLeft = Interval5MinAsSeconds;
+        }
     }
 }
