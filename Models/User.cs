@@ -1,4 +1,6 @@
-﻿namespace InteractiveOfficeClient.Models
+﻿using System;
+
+namespace InteractiveOfficeClient.Models
 {
     public class User
     {
@@ -28,6 +30,17 @@
         public override string ToString()
         {
             return $"[{UserID} - {FirstName} {LastName} <{Email}> (Picture: {ProfilePictureURL})]";
+        }
+
+        public bool ProfilePictureUrlIsValid
+        {
+            get
+            {
+                // See http://stackoverflow.com/a/7581824/1666181
+                Uri uriResult;
+                return ProfilePictureURL != null && Uri.TryCreate(ProfilePictureURL, UriKind.Absolute, out uriResult)
+                         && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            }
         }
     }
 }
