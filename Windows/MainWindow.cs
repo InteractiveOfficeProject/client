@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Threading;
 using Gdk;
 using Gtk;
 
-namespace InteractiveOfficeClient
+namespace InteractiveOfficeClient.Windows
 {
     public class MainWindow : Gtk.Window
     {

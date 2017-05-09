@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Gdk;
 using GLib;
+using InteractiveOfficeClient.Windows;
 
 namespace InteractiveOfficeClient
 {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Gtk;
-using InteractiveOfficeClient.Models;
 
-namespace InteractiveOfficeClient
+namespace InteractiveOfficeClient.Windows
 {
     public class FeedbackWindow : Gtk.Window
     {

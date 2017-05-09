@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Gtk;
 using InteractiveOfficeClient.Models;
 
-namespace InteractiveOfficeClient
+namespace InteractiveOfficeClient.Windows
 {
     public class PeopleSelectionWindow : Gtk.Window
     {

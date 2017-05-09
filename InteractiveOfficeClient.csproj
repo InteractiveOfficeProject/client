@@ -33,12 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ActivitySelectionWindow.cs" />
     <Compile Include="FeatureToggles.cs" />
-    <Compile Include="FeedbackWindow.cs" />
     <Compile Include="InteractiveOfficeClient.cs" />
     <Compile Include="IopTrayIcon.cs" />
-    <Compile Include="MainWindow.cs" />
     <Compile Include="Models/User.cs" />
     <Compile Include="Models/Activity.cs" />
     <Compile Include="Models/Room.cs" />
@@ -48,7 +45,10 @@
     <Compile Include="Models/ApiResponse.cs" />
     <Compile Include="ApplicationTimer.cs" />
     <Compile Include="AppState.cs" />
-    <Compile Include="PeopleSelectionWindow.cs" />
+    <Compile Include="Windows\ActivitySelectionWindow.cs" />
+    <Compile Include="Windows\FeedbackWindow.cs" />
+    <Compile Include="Windows\MainWindow.cs" />
+    <Compile Include="Windows\PeopleSelectionWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Gtk;
 using InteractiveOfficeClient.Models;
 
-namespace InteractiveOfficeClient
+namespace InteractiveOfficeClient.Windows
 {
     public class ActivitySelectionWindow : Gtk.Window
     {
