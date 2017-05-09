@@ -13,6 +13,8 @@ namespace InteractiveOfficeClient
         private readonly Activity[] _activities;
 
         private readonly HashSet<Activity> _selectedActivites = new HashSet<Activity>();
+        private readonly Button _continueButton = new Button("OK");
+        private readonly Label _continueLabel = new Label("Select one or more activities.");
 
         public ActivitySelectionWindow(InteractiveOfficeClient interactiveOfficeClient) : base("Break Time")
         {
@@ -45,10 +47,13 @@ namespace InteractiveOfficeClient
                 _grid.Attach(b, 0, activityRowOffset + i, 1, 1);
             }
 
-            // TODO Enable continueButton only after something is selected
-            Button continueButton = new Button("OK");
-            continueButton.Clicked += delegate { ContinueButtonClicked(); };
-            _grid.Attach(continueButton, 1, activityRowOffset + _activities.Length, 1, 1);
+            _continueButton.Clicked += delegate { ContinueButtonClicked(); };
+            _grid.Attach(_continueButton, 1, activityRowOffset + _activities.Length, 1, 1);
+            _grid.Attach(_continueLabel, 0, activityRowOffset + _activities.Length, 1, 1);
+
+
+
+            UpdateContinueWidgets();
 
             ShowLoading(false);
         }
@@ -65,6 +70,15 @@ namespace InteractiveOfficeClient
                 Console.WriteLine($"De-Selected {activity}");
                 _selectedActivites.Remove(activity);
             }
+
+            UpdateContinueWidgets();
+        }
+
+        private void UpdateContinueWidgets()
+        {
+            var hasSelectedActivities = _selectedActivites.Count > 0;
+            _continueButton.Sensitive = hasSelectedActivities;
+            _continueLabel.Visible = !hasSelectedActivities;
         }
 
         private void AddLabel(string text, int row, int col)
