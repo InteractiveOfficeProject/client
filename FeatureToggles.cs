@@ -7,7 +7,7 @@
         /// feature toggle adds the "Take a break"-title to the activity selection and with that fakes the
         /// break-notification. It can be removed after the actual notification was implemented.
         /// </summary>
-        public static readonly bool FakeTakeBreakNotification = true;
+        public static readonly bool FakeTakeBreakNotification = false;
         /// <summary>
         /// Currently, we do not have icons for the activities. The implemented buttons however can show an icons;
         /// When this feature toggle is enabled, the App shows "Missing image" for these icons. Otherwise, only text

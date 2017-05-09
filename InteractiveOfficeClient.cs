@@ -40,15 +40,16 @@ namespace InteractiveOfficeClient
             get { return _appState; }
             set
             {
-                Gtk.Application.Invoke(delegate {
+                Gtk.Application.Invoke(delegate
+                {
                     Console.WriteLine($"new state: {value}");
                     _appState = value;
                     _applicationTimer.ChangeState(value);
                     mainWindow.UpdateUi();
                 });
-
             }
         }
+
         private InteractiveOfficeClient()
         {
         }
@@ -83,14 +84,14 @@ namespace InteractiveOfficeClient
 
         public void TriggerNotification()
         {
-                if (IsWorking)
-                {
-                    TriggerNotification(AppState.NotifyingBreak);
-                }
-                else
-                {
-                    TriggerNotification(AppState.NotifyingWork);
-                }
+            if (IsWorking)
+            {
+                TriggerNotification(AppState.NotifyingBreak);
+            }
+            else
+            {
+                TriggerNotification(AppState.NotifyingWork);
+            }
         }
 
         private void TriggerNotification(AppState newState)
@@ -99,7 +100,7 @@ namespace InteractiveOfficeClient
             {
                 if (IsWorking)
                 {
-                    new ActivitySelectionWindow(this).ShowAll();
+                    ShowBreakNotification();
                 }
                 else
                 {
@@ -107,6 +108,18 @@ namespace InteractiveOfficeClient
                 }
             });
             State = newState;
+        }
+
+        private void ShowBreakNotification()
+        {
+            if (FeatureToggles.FakeTakeBreakNotification)
+            {
+                new ActivitySelectionWindow(this).ShowAll();
+            }
+            else
+            {
+                new BreakNotificationWindow(this).ShowAll();
+            }
         }
     }
 }

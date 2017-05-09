@@ -46,6 +46,7 @@
     <Compile Include="ApplicationTimer.cs" />
     <Compile Include="AppState.cs" />
     <Compile Include="Windows\ActivitySelectionWindow.cs" />
+    <Compile Include="Windows\BreakNotificationWindow.cs" />
     <Compile Include="Windows\FeedbackWindow.cs" />
     <Compile Include="Windows\MainWindow.cs" />
     <Compile Include="Windows\PeopleSelectionWindow.cs" />
