@@ -32,6 +32,10 @@ Add them to the project, place them in the Resources folder, and set them to
    * Untested on Windows/Mac
  * You must have GTK installed (untested/unknown)
 
+## Server API
+
+The Server API is documented at http://pivanics.users.cs.helsinki.fi/interactive-office-api-documentation
+
 ## Next Steps
 
  * [x] Add "minimize to tray" to keep the app running when window is closed. Useful links:
