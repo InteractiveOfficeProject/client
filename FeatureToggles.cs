@@ -3,7 +3,9 @@
     public class FeatureToggles
     {
         /// <summary>
-        ///
+        /// Currently, we did not implement the "Take a break"-notification ("Take a break" - "Ok", "snooze"). This
+        /// feature toggle adds the "Take a break"-title to the activity selection and with that fakes the
+        /// break-notification. It can be removed after the actual notification was implemented.
         /// </summary>
         public static readonly bool FakeTakeBreakNotification = true;
         /// <summary>
@@ -18,7 +20,7 @@
         /// </summary>
         public static readonly bool ShowFakePeopleSelection = true;
         /// <summary>
-        ///
+        /// Enables the loading of user images. If disabled, only the user name is shown.
         /// </summary>
         public static readonly bool LoadUserIcons = true;
     }
