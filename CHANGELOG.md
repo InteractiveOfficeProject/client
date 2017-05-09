@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.8]
+ - Added snoozing for break
+ - Removed fake break notification
+
 ## [0.0.7]
  - Opening Google Form for giving Feedback now
  - Added (fake) selecting activities
