@@ -43,22 +43,26 @@ namespace InteractiveOfficeClient
         private void OnLoadComplete(User[] users)
         {
             Gtk.Application.Invoke(delegate { _grid.Remove(_progressBar); });
-            Gtk.Application.Invoke(delegate {  _grid.Attach(new Label("Who do you want to take a break with?"), 0, 0, users.Length + 2, 1); });
- 
+            Gtk.Application.Invoke(delegate
+            {
+                _grid.Attach(new Label("Who do you want to take a break with?"), 0, 0, users.Length + 2, 1);
+            });
+
             for (int i = 0; i < users.Length; i++)
             {
                 var user = users[i];
                 UserButton b = new UserButton(user);
-                
+
                 b.Clicked += delegate { SelectedUser(user); };
-                Gtk.Application.Invoke(delegate {  _grid.Attach(b, i, 1, 1, 1); });
+                Gtk.Application.Invoke(delegate { _grid.Attach(b, 0, i + 1, 1, 1); });
             }
-            _grid.Attach(new Button("ok"), 0, 1, users.Length + 2, 1);
+            _grid.Attach(new Button("ok"), 0, users.Length + 2, 1, 1);
 
             Gtk.Application.Invoke(delegate { ShowAll(); });
         }
 
-        private void SelectedUser(User user){
+        private void SelectedUser(User user)
+        {
             // TODO show "go to this place"
             _app.State = AppState.Break;
             Close();
@@ -69,10 +73,20 @@ namespace InteractiveOfficeClient
     {
         public UserButton(User user)
         {
-            if (FeatureToggles.ShowMissingUserIcons) {
-                Image = new Gtk.Image(HttpWebRequest.Create(user.ProfilePictureURL).GetResponse().GetResponseStream());
+            if (FeatureToggles.LoadUserIcons)
+            {
+                try
+                {
+                    Image = new Gtk.Image(HttpWebRequest.Create(user.ProfilePictureURL)
+                        .GetResponse()
+                        .GetResponseStream());
+                }
+                catch (System.Net.WebException e)
+                {
+                    /* Could not load image. Use label instead */
+                    Label = $"{user.FirstName} {user.LastName}";
+                }
             }
         }
     }
-
 }
