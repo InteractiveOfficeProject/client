@@ -112,14 +112,7 @@ namespace InteractiveOfficeClient
 
         private void ShowBreakNotification()
         {
-            if (FeatureToggles.FakeTakeBreakNotification)
-            {
-                new ActivitySelectionWindow(this).ShowAll();
-            }
-            else
-            {
-                new BreakNotificationWindow(this).ShowAll();
-            }
+            new BreakNotificationWindow(this).ShowAll();
         }
 
         public void SnoozeBreak()

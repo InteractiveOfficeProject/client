@@ -1,13 +1,15 @@
 ﻿namespace InteractiveOfficeClient
 {
+    /// <summary>
+    /// This class collects all feature toggles to enable and disable function as necessary. For more information on
+    /// this pattern see https://martinfowler.com/articles/feature-toggles.html
+    ///
+    /// Toggles should only introduced for new and experimental features. If a toggle is stable, you can set it to its
+    /// final state and replace <code>static readonly</code> with <code>const</code>; your IDE will most likely give you
+    /// a warning about "unreachable branches" - these can be removed as they are not used anymore.
+    /// </summary>
     public class FeatureToggles
     {
-        /// <summary>
-        /// Currently, we did not implement the "Take a break"-notification ("Take a break" - "Ok", "snooze"). This
-        /// feature toggle adds the "Take a break"-title to the activity selection and with that fakes the
-        /// break-notification. It can be removed after the actual notification was implemented.
-        /// </summary>
-        public static readonly bool FakeTakeBreakNotification = false;
         /// <summary>
         /// Currently, we do not have icons for the activities. The implemented buttons however can show an icons;
         /// When this feature toggle is enabled, the App shows "Missing image" for these icons. Otherwise, only text

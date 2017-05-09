@@ -23,17 +23,8 @@ namespace InteractiveOfficeClient.Windows
             _activities = Activity.DefaultActivities;
 
             int activityRowOffset;
-            if (FeatureToggles.FakeTakeBreakNotification)
-            {
-                AddLabel("It is time for you to take a break.", 0, 0);
-                AddLabel("What do you feel like?", 1, 0);
-                activityRowOffset = 2;
-            }
-            else
-            {
-                AddLabel("What do you feel like?", 0, 0);
-                activityRowOffset = 1;
-            }
+            AddLabel("What do you feel like?", 0, 0);
+            activityRowOffset = 1;
 
 
             for (int i = 0; i < _activities.Length; i++)
