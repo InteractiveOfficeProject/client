@@ -75,6 +75,18 @@ namespace InteractiveOfficeClient
         {
             if (FeatureToggles.LoadUserIcons)
             {
+                LoadImageWithFallBackLabel(user);
+            }
+            else
+            {
+                Label = $"{user.FirstName} {user.LastName}";
+            }
+        }
+
+        private void LoadImageWithFallBackLabel(User user)
+        {
+            if (user.ProfilePictureUrlIsValid)
+            {
                 try
                 {
                     Image = new Gtk.Image(HttpWebRequest.Create(user.ProfilePictureURL)
@@ -86,6 +98,10 @@ namespace InteractiveOfficeClient
                     /* Could not load image. Use label instead */
                     Label = $"{user.FirstName} {user.LastName}";
                 }
+            }
+            else
+            {
+                Label = $"{user.FirstName} {user.LastName}";
             }
         }
     }
